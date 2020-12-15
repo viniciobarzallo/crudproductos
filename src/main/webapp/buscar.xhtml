@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<ui:composition template="template/template.xhtml">
+
+	<ui:define name="title">
+           Buscar producto
+        </ui:define>
+	<ui:define name="content">
+		<h:form>
+
+
+
+
+
+			<h:outputLabel value="Codigo:" />
+			<h:inputText value="#{productoBean.codigo}" id="txtCodigo">
+			</h:inputText>
+
+
+
+
+
+
+
+			<h:commandButton class="btn btn-success"
+				action="#{productoBean.buscarProductos()}" value="Buscar">
+				<f:ajax render="@form" execute="@form" />
+			</h:commandButton>
+
+			<h:dataTable styleClass="table table-hover" id="tabla"
+				value="#{productoBean.pro}" var="pro">
+
+				<h:column>
+
+					<f:facet name="header">Codigo Producto</f:facet>
+                #{pro.idproducto}
+				</h:column>
+				<br />
+				<br />
+				<h:column>
+					<f:facet name="header">Descripcion</f:facet>  
+                    #{pro.descripcion}
+                </h:column>
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Categoria</f:facet>
+					
+                #{pro.categoria}
+				</h:column>
+
+				<br />
+				<br />
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Cantidad</f:facet>  
+                    #{pro.cantidad}
+                </h:column>
+
+<br />
+				<br />
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Precio</f:facet>  
+                    #{pro.precio}
+                </h:column>
+
+
+			</h:dataTable>
+
+
+
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
+</html>
